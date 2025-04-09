@@ -1,3 +1,5 @@
+import ChangeLog from '../changelog/connector-file-oss.md';
+
 # OssFile
 
 > Oss file source connector
@@ -192,10 +194,12 @@ If you assign file type to `parquet` `orc`, schema option not required, connecto
 | time_format               | string  | no       | HH:mm:ss            | Time type format, used to tell connector how to convert string to time, supported as the following formats:`HH:mm:ss` `HH:mm:ss.SSS`                                                                                                                                                                                                |
 | filename_extension        | string  | no       | -                   | Filter filename extension, which used for filtering files with specific extension. Example: `csv` `.txt` `json` `.xml`.                                                                                                                                                                                                             |
 | skip_header_row_number    | long    | no       | 0                   | Skip the first few lines, but only for the txt and csv. For example, set like following:`skip_header_row_number = 2`. Then SeaTunnel will skip the first 2 lines from source files                                                                                                                                                  |
+| csv_use_header_line       | boolean | no       | false               | Whether to use the header line to parse the file, only used when the file_format is `csv` and the file contains the header line that match RFC 4180                                                                                                                                                                                         |
 | schema                    | config  | no       | -                   | The schema of upstream data.                                                                                                                                                                                                                                                                                                        |
 | sheet_name                | string  | no       | -                   | Reader the sheet of the workbook,Only used when file_format is excel.                                                                                                                                                                                                                                                               |
 | xml_row_tag               | string  | no       | -                   | Specifies the tag name of the data rows within the XML file, only used when file_format is xml.                                                                                                                                                                                                                                     |
 | xml_use_attr_format       | boolean | no       | -                   | Specifies whether to process data using the tag attribute format, only used when file_format is xml.                                                                                                                                                                                                                                |
+| csv_use_header_line       | boolean | no       | false               | Whether to use the header line to parse the file, only used when the file_format is `csv` and the file contains the header line that match RFC 4180                                                                                                                                                                                         |
 | compress_codec            | string  | no       | none                | Which compress codec the files used.                                                                                                                                                                                                                                                                                                |
 | encoding                  | string  | no       | UTF-8               |
 | null_format               | string  | no       | -                   | Only used when file_format_type is text. null_format to define which strings can be represented as null. e.g: `\N`                                                                                                                                                                                                                  |
@@ -540,17 +544,4 @@ sink {
 
 ## Changelog
 
-### 2.2.0-beta 2022-09-26
-
-- Add OSS File Source Connector
-
-### 2.3.0-beta 2022-10-20
-
-- [BugFix] Fix the bug of incorrect path in windows environment ([2980](https://github.com/apache/seatunnel/pull/2980))
-- [Improve] Support extract partition from SeaTunnelRow fields ([3085](https://github.com/apache/seatunnel/pull/3085))
-- [Improve] Support parse field from file path ([2985](https://github.com/apache/seatunnel/pull/2985))
-
-### Tips
-
-> 1.[SeaTunnel Deployment Document](../../start-v2/locally/deployment.md).
-
+<ChangeLog />
